@@ -2,20 +2,48 @@ function solve() {
     let firstNumInput = document.getElementById("f-num");
     let secondNumInput = document.getElementById("s-num")
     let resultField = document.getElementById("result")
-    let button = document.getElementById("submit")
+    resultField.value = "";
 
-    button.addEventListener("click", subFunc)
+    let fNumValue = firstNumInput.value;
+    let sNumValue = secondNumInput.value;
+    let mathOperations = document.querySelector("#mathCalc");
 
-    function subFunc(e) {
-        let fNumValue = firstNumInput.value;
-        let sNumValue = secondNumInput.value;
-        console.log(fNumValue)
+    console.log(mathOperations.children)
+    let childList = mathOperations.children
+    Array.from(childList).forEach((x, i) => {
+        let res = ""
+        if (i % 2 === 1) {
+            if (document.getElementById("add").checked) {
+                res = Number(fNumValue) + Number(sNumValue)
+                resultField.value = res
+                firstNumInput.value = "";
+                secondNumInput.value = "";
 
-        console.log(sNumValue)
-        let res = Number(fNumValue) + Number(sNumValue)
-        console.log(res)
-        resultField.value = res
+            } else if (document.getElementById("subtract").checked) {
 
-    }
+                res = Number(fNumValue) - Number(sNumValue)
+                resultField.value = res
+                firstNumInput.value = "";
+                secondNumInput.value = "";
+            }
+        } else if (document.getElementById("multiply").checked) {
+
+            res = Number(fNumValue) * Number(sNumValue)
+            resultField.value = res
+            firstNumInput.value = "";
+            secondNumInput.value = "";
+
+        } else if (document.getElementById("division").checked) {
+            res = Number(fNumValue) / Number(sNumValue)
+            resultField.value = res
+            firstNumInput.value = "";
+            secondNumInput.value = "";
+        }
+
+    })
+
+
+
 
 }
+
